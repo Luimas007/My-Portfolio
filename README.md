@@ -4,7 +4,7 @@ Welcome to my **Portfolio Website**! 🚀 This project showcases my skills, proj
 
 ## 🌐 Live Preview
 
-🔗 [View the live site here!](#) (Replace `https://luimas007.github.io/My-Portfolio/` with your live site URL)
+🔗 [View the live site here!](https://luimas007.github.io/My-Portfolio/) 
 
 ---
 
