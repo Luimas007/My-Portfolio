@@ -92,7 +92,7 @@ This project is **MIT Licensed**.
 ### 📫 Let's Connect!
 
 - **GitHub**: [My GitHub Profile](https://github.com/luimas007)
-- **LinkedIn**: [My LinkedIn Profile]([https://linkedin.com/in/luimas007](https://www.linkedin.com/in/samiul-haque-siddique-9036a724a/))
+- **LinkedIn**: [My LinkedIn Profile](https://www.linkedin.com/in/samiul-haque-siddique-9036a724a/)
 
 ---
 
