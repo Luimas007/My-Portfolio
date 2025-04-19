@@ -4,19 +4,10 @@ Welcome to my **Portfolio Website**! 🚀 This project showcases my skills, proj
 
 ## 🌐 Live Preview
 
-🔗 [View the live site here!](#) (Replace `#` with your live site URL)
+🔗 [View the live site here!](#) (Replace `https://luimas007.github.io/My-Portfolio/` with your live site URL)
 
 ---
 
-## 📸 Screenshots
-
-📷 **Desktop View:**
-![Desktop View](#) _(Add a screenshot link here)_
-
-📱 **Mobile View:**
-![Mobile View](#) _(Add a screenshot link here)_
-
----
 
 ## 🛠️ Features
 
@@ -55,7 +46,7 @@ Welcome to my **Portfolio Website**! 🚀 This project showcases my skills, proj
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
+   git clone https://github.com/luimas007/your-repo-name.git
    ```
 
 2. Navigate to the project folder:
