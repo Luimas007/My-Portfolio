@@ -100,8 +100,8 @@ This project is **MIT Licensed**.
 
 ### 📫 Let's Connect!
 
-- **GitHub**: [Your GitHub Profile](https://github.com/yourusername)
-- **LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/yourusername)
+- **GitHub**: [Your GitHub Profile](https://github.com/luimas007)
+- **LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/luimas007)
 
 ---
 
