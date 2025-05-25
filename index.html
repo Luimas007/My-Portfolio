@@ -3,385 +3,1335 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Samiul Haque</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>
+      Samiul Haque | Machine Learning Engineer & Competitive Programmer
+    </title>
 
-    <!-- box icons -->
+    <!-- Bootstrap 5 CSS -->
     <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Typed.js -->
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      :root {
+        --primary: #0d6efd;
+        --secondary: #6c757d;
+        --dark: #212529;
+        --darker: #1a1a1a;
+        --darkest: #121212;
+        --light: #f8f9fa;
+        --codeforces: #1f8acb;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: var(--darkest);
+        color: var(--light);
+        overflow-x: hidden;
+      }
+
+      .code-font {
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      .navbar {
+        background-color: rgba(13, 13, 13, 0.9) !important;
+        backdrop-filter: blur(10px);
+      }
+
+      .navbar-brand,
+      .nav-link {
+        color: var(--light) !important;
+      }
+
+      .navbar-brand span {
+        color: var(--primary);
+      }
+
+      .section {
+        padding: 100px 0;
+      }
+
+      .section-title {
+        position: relative;
+        margin-bottom: 60px;
+        font-weight: 700;
+      }
+
+      .section-title span {
+        color: var(--primary);
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background: var(--primary);
+      }
+
+      .hero {
+        min-height: 100vh;
+        background: linear-gradient(
+          135deg,
+          var(--darkest) 0%,
+          var(--darker) 100%
+        );
+      }
+
+      .code-visual {
+        border: 5px solid var(--primary);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
+        background-color: var(--dark);
+        width: 100%;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .code-snippet {
+        font-family: "JetBrains Mono", monospace;
+        color: var(--light);
+        text-align: left;
+        padding: 20px;
+        width: 100%;
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .code-keyword {
+        color: #569cd6;
+      }
+
+      .code-function {
+        color: #dcdcaa;
+      }
+
+      .code-string {
+        color: #ce9178;
+      }
+
+      .code-comment {
+        color: #6a9955;
+      }
+
+      .typed-text {
+        color: var(--primary);
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        border-color: var(--primary);
+      }
+
+      .btn-outline-primary {
+        color: var(--primary);
+        border-color: var(--primary);
+      }
+
+      .btn-outline-primary:hover {
+        background-color: var(--primary);
+      }
+
+      .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(13, 110, 253, 0.1);
+        color: var(--primary);
+        margin-right: 10px;
+        transition: all 0.3s;
+      }
+
+      .social-icon:hover {
+        background-color: var(--primary);
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      /* Creative Skill Visualization */
+      .skill-visualization {
+        margin-bottom: 30px;
+      }
+
+      .skill-name {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+      }
+
+      .skill-bubbles {
+        display: flex;
+        gap: 5px;
+      }
+
+      .bubble {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: var(--darker);
+        transition: all 0.3s;
+      }
+
+      .bubble.filled {
+        background-color: var(--primary);
+        transform: scale(1.1);
+      }
+
+      .bubble.highlight {
+        animation: pulse 1.5s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.2);
+          opacity: 0.7;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .project-card {
+        background-color: var(--dark);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: all 0.3s;
+        margin-bottom: 30px;
+        border: none;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(13, 110, 253, 0.2);
+      }
+
+      .project-img {
+        height: 200px;
+        background-color: var(--darker);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--secondary);
+        font-size: 1.2rem;
+      }
+
+      .contact-form {
+        background-color: var(--dark);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-control {
+        background-color: var(--darker);
+        border: 1px solid var(--secondary);
+        color: var(--light);
+        padding: 15px;
+        margin-bottom: 20px;
+      }
+
+      .form-control:focus {
+        background-color: var(--darker);
+        color: var(--light);
+        border-color: var(--primary);
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+      }
+
+      .badge-codeforces {
+        background-color: var(--codeforces);
+        color: white;
+      }
+
+      .timeline {
+        position: relative;
+        padding-left: 50px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 15px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: var(--primary);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 30px;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -38px;
+        top: 5px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        border: 4px solid var(--darkest);
+      }
+
+      .timeline-date {
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--primary);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s;
+        z-index: 999;
+      }
+
+      .back-to-top.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .tech-item {
+        background-color: rgba(13, 110, 253, 0.1);
+        color: var(--primary);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+      }
+
+      .cp-badge {
+        background-color: rgba(31, 138, 203, 0.1);
+        color: var(--codeforces);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .cp-badge i {
+        margin-right: 5px;
+      }
+
+      .achievement-card {
+        background-color: var(--dark);
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-left: 4px solid var(--primary);
+      }
+
+      .certification-item {
+        margin-bottom: 15px;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .certification-item::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+      }
+    </style>
   </head>
   <body>
-    <!-- header design -->
-    <header class="header top">
-      <a href="#" class="logo">Port<span>folio.</span></a>
-      <div class="bx bx-menu" id="menu-icon"></div>
-      <nav class="navbar">
-        <a href="#home" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#portfolio">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Samiul<span>Haque</span></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#education">Education</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-    <!-- home section design -->
-    <section class="home" id="home">
-      <div class="home-info">
-        <div class="home-content left">
-          <h1>Hi, I'm <span>Samiul Haque Siddique</span></h1>
-          <h3 class="text-animate">
-            And I'm a <span class="multiple-text"></span>
-          </h3>
-          <p>
-            I am a passionate programmer with a strong competitive programming
-            background, currently solved 1500+ problems in various platforms .
-            With extensive experience in debugging and solving complex coding
-            problems.
-          </p>
-          <div class="btn-box">
-            <a href="#contact" class="btn">Hire Me</a>
-            <a
-              href="https://drive.google.com/file/d/1NVyMKI4p0C5ooZE0v_JX18kRhxbZp6Oh/view?usp=sharing"
-              class="btn"
-              target="_blank"
-              >View CV</a
+    <!-- Hero Section -->
+    <section id="home" class="hero d-flex align-items-center">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right">
+            <h4 class="text-primary mb-3">Hello, I'm</h4>
+            <h1 class="display-4 fw-bold mb-3">Samiul Haque Siddique</h1>
+            <h3 class="mb-4">
+              And I'm a <span class="typed-text text-primary"></span>
+            </h3>
+
+            <div class="d-flex align-items-center mb-4">
+              <span class="cp-badge me-3">
+                <i class="bi bi-trophy-fill"></i> ICPC Regionalist (Rank 121)
+              </span>
+              <span class="cp-badge">
+                <i class="bi bi-check-circle-fill"></i> Codeforces Specialist
+              </span>
+            </div>
+
+            <p class="lead mb-4">
+              Machine Learning Engineer with strong competitive programming
+              skills, backend development expertise, and passion for solving
+              complex problems.
+            </p>
+
+            <div class="d-flex flex-wrap gap-3 mb-4">
+              <a href="#contact" class="btn btn-primary btn-lg px-4">Hire Me</a>
+              <a
+                href="https://drive.google.com/file/d/1NVyMKI4p0C5ooZE0v_JX18kRhxbZp6Oh/view?usp=sharing"
+                target="_blank"
+                class="btn btn-outline-primary btn-lg px-4"
+                >View CV</a
+              >
+            </div>
+
+            <div class="d-flex mt-4">
+              <a
+                href="https://www.facebook.com/Luimas007"
+                target="_blank"
+                class="social-icon"
+              >
+                <i class="bi bi-facebook"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/samiul-haque-siddique-9036a724a/"
+                target="_blank"
+                class="social-icon"
+              >
+                <i class="bi bi-linkedin"></i>
+              </a>
+              <a
+                href="https://github.com/Luimas007"
+                target="_blank"
+                class="social-icon"
+              >
+                <i class="bi bi-github"></i>
+              </a>
+              <a
+                href="https://linktr.ee/luimas007"
+                title="Coding Profiles"
+                target="_blank"
+                class="social-icon"
+              >
+                <i class="bi bi-code-square"></i>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="code-visual">
+              <div class="code-snippet">
+                <span class="code-keyword">class</span>
+                <span class="code-function">MachineLearningEngineer</span>
+                {<br />
+                &nbsp;&nbsp;<span class="code-keyword">constructor</span>() {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">this</span
+                >.name = <span class="code-string">"Samiul Haque"</span>;<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">this</span
+                >.skills = [<span class="code-string">"Python"</span>,
+                <span class="code-string">"ML"</span>,
+                <span class="code-string">"C++"</span>];<br />
+                &nbsp;&nbsp;}<br /><br />
+                &nbsp;&nbsp;<span class="code-function">solveProblem</span
+                >(problem) {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span>
+                <span class="code-string">"Optimal Solution"</span>;<br />
+                &nbsp;&nbsp;}<br />
+                }<br /><br />
+                <span class="code-comment"
+                  >// Competitive Programmer & ML Engineer</span
+                ><br />
+                <span class="code-keyword">const</span> me =
+                <span class="code-keyword">new</span>
+                <span class="code-function">MachineLearningEngineer</span>();
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">About <span>Me</span></h2>
+        <div class="row align-items-center">
+          <div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right">
+            <div class="code-visual" style="height: 100%">
+              <div class="code-snippet">
+                <span class="code-comment"># Professional Overview</span><br />
+                <span class="code-keyword">def</span>
+                <span class="code-function">about_me</span>():<br />
+                &nbsp;&nbsp;<span class="code-keyword">return</span> {<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"role"</span>:
+                <span class="code-string">"Machine Learning Engineer"</span
+                >,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"skills"</span
+                >: [<span class="code-string">"Python"</span>,
+                <span class="code-string">"C++"</span>,
+                <span class="code-string">"ML"</span>],<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string"
+                  >"education"</span
+                >: <span class="code-string">"B.Sc CSE @ BUP"</span>,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string"
+                  >"achievements"</span
+                >: [<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string"
+                  >"ICPC Regionalist (Rank 121)"</span
+                >,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string"
+                  >"Codeforces Specialist"</span
+                >,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string"
+                  >"UIU CSE Fest (51st)"</span
+                ><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;]<br />
+                &nbsp;&nbsp;}<br /><br />
+                <span class="code-comment"
+                  ># Passionate about AI and competitive programming</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7" data-aos="fade-left">
+            <h3 class="mb-3">
+              Machine Learning Engineer & Competitive Programmer
+            </h3>
+            <p class="mb-4">
+              I am a Computer Science undergraduate at Bangladesh University of
+              Professionals with a strong foundation in
+              <span class="text-primary">machine learning</span> and
+              <span class="text-primary">competitive programming</span>. As the
+              <span class="fw-bold">Co-Founder</span> of BUP Computer
+              Programming Club, I've mentored 100+ students in data structures,
+              algorithms, and competitive programming.
+            </p>
+
+            <p class="mb-4">
+              My achievements include ranking
+              <span class="text-primary"
+                >121st in ICPC Dhaka Regional 2023</span
+              >
+              among 400+ teams, and earning the
+              <span class="text-primary">Codeforces Specialist</span> title. I'm
+              passionate about building intelligent systems and solving complex
+              algorithmic challenges.
+            </p>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-calendar-check text-primary me-2"></i>
+                  <div>
+                    <h6 class="mb-0">Experience</h6>
+                    <p class="mb-0">2+ Years</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-code-square text-primary me-2"></i>
+                  <div>
+                    <h6 class="mb-0">CP Rating</h6>
+                    <p class="mb-0">Codeforces Specialist</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-mortarboard text-primary me-2"></i>
+                  <div>
+                    <h6 class="mb-0">Education</h6>
+                    <p class="mb-0">B.Sc in CSE (3.71/4.00)</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-award text-primary me-2"></i>
+                  <div>
+                    <h6 class="mb-0">ICPC</h6>
+                    <p class="mb-0">Rank 121 (Regional)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <h5 class="mb-3">Technology Stack</h5>
+              <div class="tech-stack">
+                <span class="tech-item">Python</span>
+                <span class="tech-item">C++</span>
+                <span class="tech-item">TensorFlow</span>
+                <span class="tech-item">Node.js</span>
+                <span class="tech-item">Express</span>
+                <span class="tech-item">MongoDB</span>
+                <span class="tech-item">Django</span>
+                <span class="tech-item">FastAPI</span>
+                <span class="tech-item">JavaScript</span>
+                <span class="tech-item">Docker</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Experience Section -->
+    <section id="education" class="section bg-dark">
+      <div class="container">
+        <h2 class="section-title">My <span>Journey</span></h2>
+        <div class="row">
+          <div class="col-lg-6" data-aos="fade-up">
+            <h3 class="mb-4">
+              <i class="bi bi-mortarboard text-primary me-2"></i> Education
+            </h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <h5 class="timeline-date">2022 - 2025</h5>
+                <h4>B.Sc in Computer Science & Engineering</h4>
+                <p class="text-muted">Bangladesh University of Professionals</p>
+                <p>CGPA: 3.71/4.00</p>
+                <p class="text-muted">
+                  Relevant Courses: Data Structures & Algorithms, OOP, Operating
+                  Systems, DBMS, Compiler Design, Computer Networks
+                </p>
+              </div>
+              <div class="timeline-item">
+                <h5 class="timeline-date">2019 - 2021</h5>
+                <h4>Higher Secondary Certificate</h4>
+                <p class="text-muted">Dhaka College</p>
+                <p>GPA: 5.00/5.00</p>
+              </div>
+            </div>
+
+            <h3 class="mt-5 mb-4">
+              <i class="bi bi-award text-primary me-2"></i> Certifications
+            </h3>
+            <div class="certification-item">
+              Machine Learning Specialization - DeepLearning.AI (Coursera)
+            </div>
+            <div class="certification-item">
+              IBM Data Science Professional Certificate (Coursera)
+            </div>
+            <div class="certification-item">
+              Backend Development with Node.js and Express (Coursera)
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="mb-4">
+              <i class="bi bi-briefcase text-primary me-2"></i> Experience
+            </h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <h5 class="timeline-date">May 2023 - Present</h5>
+                <h4>Co-Founder & Programming Mentor</h4>
+                <p class="text-muted">BUP Computer Programming Club</p>
+                <ul>
+                  <li>Founded the first programming club at BUP</li>
+                  <li>
+                    Mentored 100+ students in DSA and competitive programming
+                  </li>
+                  <li>Organized coding workshops and contests</li>
+                  <li>
+                    Improved participation in regional programming contests
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 class="mt-5 mb-4">
+              <i class="bi bi-trophy text-primary me-2"></i> Achievements
+            </h3>
+            <div class="achievement-card">
+              <h5>ICPC Dhaka Regional 2023</h5>
+              <p>Ranked 121st among 400+ teams</p>
+            </div>
+            <div class="achievement-card">
+              <h5>UIU CSE Fest Inter-University Programming Contest</h5>
+              <p>Placed 51st</p>
+            </div>
+            <div class="achievement-card">
+              <h5>Bangladesh Math Olympiad 2019</h5>
+              <p>Regional Champion (Secondary Category)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title">My <span>Skills</span></h2>
+        <div class="row">
+          <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-up">
+            <h3 class="mb-4">
+              <i class="bi bi-code-slash text-primary me-2"></i> Programming
+              Languages
+            </h3>
+
+            <div class="skill-visualization">
+              <div class="skill-name">
+                <span>C++ (Competitive Programming)</span>
+              </div>
+              <div class="skill-bubbles">
+                <div class="bubble filled highlight"></div>
+                <div class="bubble filled highlight"></div>
+                <div class="bubble filled highlight"></div>
+                <div class="bubble filled"></div>
+                <div class="bubble filled"></div>
+              </div>
+            </div>
+
+            <div class="skill-visualization">
+              <div class="skill-name">
+                <span>Python (ML/DL)</span>
+              </div>
+              <div class="skill-bubbles">
+                <div class="bubble filled highlight"></div>
+                <div class="bubble filled highlight"></div>
+                <div class="bubble filled highlight"></div>
+                <div class="bubble filled"></div>
+                <div class="bubble"></div>
+              </div>
+            </div>
+
+            <div class="skill-visualization">
+              <div class="skill-name">
+                <span>JavaScript</span>
+              </div>
+              <div class="skill-bubbles">
+                <div class="bubble filled highlight"></div>
+                <div class="bubble filled highlight"></div>
+                <div class="bubble filled"></div>
+                <div class="bubble filled"></div>
+                <div class="bubble"></div>
+              </div>
+            </div>
+
+            <h3 class="mt-5 mb-4">
+              <i class="bi bi-database text-primary me-2"></i> Databases
+            </h3>
+            <div class="skill-visualization">
+              <div class="skill-name">
+                <span>MongoDB</span>
+              </div>
+              <div class="skill-bubbles">
+                <div class="bubble filled highlight"></div>
+                <div class="bubble filled highlight"></div>
+                <div class="bubble filled"></div>
+                <div class="bubble filled"></div>
+                <div class="bubble"></div>
+              </div>
+            </div>
+
+            <div class="skill-visualization">
+              <div class="skill-name">
+                <span>MySQL</span>
+              </div>
+              <div class="skill-bubbles">
+                <div class="bubble filled highlight"></div>
+                <div class="bubble filled"></div>
+                <div class="bubble filled"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="mb-4">
+              <i class="bi bi-boxes text-primary me-2"></i> Frameworks & Tools
+            </h3>
+
+            <div class="skill-visualization">
+              <div class="skill-name">
+                <span>Express.js</span>
+              </div>
+              <div class="skill-bubbles">
+                <div class="bubble filled highlight"></div>
+                <div class="bubble filled highlight"></div>
+                <div class="bubble filled"></div>
+                <div class="bubble filled"></div>
+                <div class="bubble"></div>
+              </div>
+            </div>
+
+            <div class="skill-visualization">
+              <div class="skill-name">
+                <span>Django</span>
+              </div>
+              <div class="skill-bubbles">
+                <div class="bubble filled highlight"></div>
+                <div class="bubble filled"></div>
+                <div class="bubble filled"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+              </div>
+            </div>
+
+            <div class="skill-visualization">
+              <div class="skill-name">
+                <span>FastAPI</span>
+              </div>
+              <div class="skill-bubbles">
+                <div class="bubble filled highlight"></div>
+                <div class="bubble filled"></div>
+                <div class="bubble filled"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+              </div>
+            </div>
+
+            <div class="skill-visualization">
+              <div class="skill-name">
+                <span>TensorFlow</span>
+              </div>
+              <div class="skill-bubbles">
+                <div class="bubble filled highlight"></div>
+                <div class="bubble filled"></div>
+                <div class="bubble filled"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+              </div>
+            </div>
+
+            <h3 class="mt-5 mb-4">
+              <i class="bi bi-tools text-primary me-2"></i> Developer Tools
+            </h3>
+            <div class="tech-stack">
+              <span class="tech-item">Git</span>
+              <span class="tech-item">Docker</span>
+              <span class="tech-item">VS Code</span>
+              <span class="tech-item">Jupyter</span>
+              <span class="tech-item">Postman</span>
+              <span class="tech-item">Kaggle</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section bg-dark">
+      <div class="container">
+        <h2 class="section-title">My <span>Projects</span></h2>
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up">
+            <div class="card project-card h-100">
+              <div class="project-img">Graph Visualizer</div>
+              <div class="card-body">
+                <h5 class="card-title">Graph Visualizer (DSA Tool)</h5>
+                <p class="card-text">
+                  Interactive tool to visualize user-defined graphs with
+                  real-time updates using Vis.js.
+                </p>
+                <div class="tech-stack mb-3">
+                  <span class="tech-item">JavaScript</span>
+                  <span class="tech-item">HTML5</span>
+                  <span class="tech-item">CSS3</span>
+                  <span class="tech-item">Vis.js</span>
+                </div>
+                <a
+                  href="https://github.com/Luimas007/graph-visualizer"
+                  target="_blank"
+                  class="btn btn-primary btn-sm me-2"
+                >
+                  <i class="bi bi-github me-1"></i> Code
+                </a>
+                <a
+                  href="https://luimas007.github.io/graph-visualizer/"
+                  target="_blank"
+                  class="btn btn-outline-primary btn-sm"
+                >
+                  <i class="bi bi-eye me-1"></i> Live
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-lg-4 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="card project-card h-100">
+              <div class="project-img">Weather App</div>
+              <div class="card-body">
+                <h5 class="card-title">Predictive Weather App</h5>
+                <p class="card-text">
+                  Fullstack app that fetches real-time weather data and predicts
+                  next day's forecast.
+                </p>
+                <div class="tech-stack mb-3">
+                  <span class="tech-item">FastAPI</span>
+                  <span class="tech-item">Python</span>
+                  <span class="tech-item">JavaScript</span>
+                </div>
+                <a
+                  href="https://github.com/Luimas007/front-weather"
+                  target="_blank"
+                  class="btn btn-primary btn-sm me-2"
+                >
+                  <i class="bi bi-github me-1"></i> Code
+                </a>
+                <a
+                  href="https://luimas007.github.io/front-weather/"
+                  target="_blank"
+                  class="btn btn-outline-primary btn-sm"
+                >
+                  <i class="bi bi-eye me-1"></i> Live
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-lg-4 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="card project-card h-100">
+              <div class="project-img">To-Do List</div>
+              <div class="card-body">
+                <h5 class="card-title">To-Do List App</h5>
+                <p class="card-text">
+                  Productivity app to manage tasks with CRUD functionality and
+                  local storage.
+                </p>
+                <div class="tech-stack mb-3">
+                  <span class="tech-item">JavaScript</span>
+                  <span class="tech-item">HTML5</span>
+                  <span class="tech-item">CSS3</span>
+                </div>
+                <a
+                  href="https://github.com/Luimas007/list-todo"
+                  target="_blank"
+                  class="btn btn-primary btn-sm me-2"
+                >
+                  <i class="bi bi-github me-1"></i> Code
+                </a>
+                <a
+                  href="https://luimas007.github.io/list-todo/"
+                  target="_blank"
+                  class="btn btn-outline-primary btn-sm"
+                >
+                  <i class="bi bi-eye me-1"></i> Live
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up">
+            <div class="card project-card h-100">
+              <div class="project-img">Tic Tac Toe</div>
+              <div class="card-body">
+                <h5 class="card-title">Tic Tac Toe Game</h5>
+                <p class="card-text">
+                  Interactive multiplayer game with win/draw detection and
+                  responsive design.
+                </p>
+                <div class="tech-stack mb-3">
+                  <span class="tech-item">JavaScript</span>
+                  <span class="tech-item">HTML5</span>
+                  <span class="tech-item">CSS3</span>
+                </div>
+                <a
+                  href="https://github.com/Luimas007/tic-tac-toe"
+                  target="_blank"
+                  class="btn btn-primary btn-sm me-2"
+                >
+                  <i class="bi bi-github me-1"></i> Code
+                </a>
+                <a
+                  href="https://luimas007.github.io/tic-tac-toe/"
+                  target="_blank"
+                  class="btn btn-outline-primary btn-sm"
+                >
+                  <i class="bi bi-eye me-1"></i> Live
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-lg-4 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="card project-card h-100">
+              <div class="project-img">ML Project</div>
+              <div class="card-body">
+                <h5 class="card-title">Machine Learning Project</h5>
+                <p class="card-text">
+                  Currently working on an ML model for predictive analysis
+                  (details coming soon).
+                </p>
+                <div class="tech-stack mb-3">
+                  <span class="tech-item">Python</span>
+                  <span class="tech-item">TensorFlow</span>
+                  <span class="tech-item">Scikit-learn</span>
+                </div>
+                <button class="btn btn-secondary btn-sm" disabled>
+                  In Progress
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-lg-4 mb-4"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="card project-card h-100">
+              <div class="project-img">API Service</div>
+              <div class="card-body">
+                <h5 class="card-title">RESTful API Service</h5>
+                <p class="card-text">
+                  High-performance backend API with authentication and database
+                  integration.
+                </p>
+                <div class="tech-stack mb-3">
+                  <span class="tech-item">Node.js</span>
+                  <span class="tech-item">Express</span>
+                  <span class="tech-item">MongoDB</span>
+                </div>
+                <button class="btn btn-secondary btn-sm" disabled>
+                  Coming Soon
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">Contact <span>Me!</span></h2>
+        <div class="row">
+          <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+            <div class="contact-info">
+              <h3 class="mb-4">Let's Talk About Your Project</h3>
+              <p class="mb-4">
+                I'm currently looking for new opportunities in machine learning
+                and backend development. Whether you have a question or just
+                want to say hi, I'll get back to you as soon as possible!
+              </p>
+
+              <div class="d-flex align-items-center mb-3">
+                <i class="bi bi-envelope text-primary me-3 fs-4"></i>
+                <div>
+                  <h6 class="mb-0">Email</h6>
+                  <p class="mb-0">samisiddique0@gmail.com</p>
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center mb-3">
+                <i class="bi bi-geo-alt text-primary me-3 fs-4"></i>
+                <div>
+                  <h6 class="mb-0">Location</h6>
+                  <p class="mb-0">Dhaka, Bangladesh</p>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <h5 class="mb-3">Follow Me</h5>
+                <div class="d-flex">
+                  <a
+                    href="https://www.facebook.com/Luimas007"
+                    target="_blank"
+                    class="social-icon me-2"
+                  >
+                    <i class="bi bi-facebook"></i>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/samiul-haque-siddique-9036a724a/"
+                    target="_blank"
+                    class="social-icon me-2"
+                  >
+                    <i class="bi bi-linkedin"></i>
+                  </a>
+                  <a
+                    href="https://github.com/Luimas007"
+                    target="_blank"
+                    class="social-icon me-2"
+                  >
+                    <i class="bi bi-github"></i>
+                  </a>
+                  <a
+                    href="https://linktr.ee/luimas007"
+                    target="_blank"
+                    class="social-icon"
+                  >
+                    <i class="bi bi-code-square"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <form
+              id="contactForm"
+              class="contact-form"
+              action="https://formspree.io/f/xwpodvbv"
+              method="POST"
             >
-          </div>
-        </div>
-
-        <div class="home-sci">
-          <a href="https://www.facebook.com/Luimas007" target="_blank"
-            ><i class="bx bxl-facebook"></i
-          ></a>
-          <a
-            href="https://www.linkedin.com/in/samiul-haque-siddique-9036a724a/"
-            target="_blank"
-            ><i class="bx bxl-linkedin"></i
-          ></a>
-          <a href="https://github.com/Luimas007" target="_blank"
-            ><i class="bx bxl-github"></i
-          ></a>
-          <a
-            href="https://linktr.ee/luimas007"
-            title="Coding Profiles"
-            target="_blank"
-            ><i class="bx bx-code-alt"></i
-          ></a>
-        </div>
-      </div>
-
-      <div class="my-img right">
-        <img src="images/my pic.jpeg" alt="" />
-      </div>
-    </section>
-
-    <!-- about section design -->
-    <section class="about" id="about">
-      <div class="about-img left">
-        <img src="images/my pic.jpeg" alt="" class="about-img-2" />
-        <span class="circle-spin"></span>
-      </div>
-
-      <div class="about-details right">
-        <h2 class="heading">About <span>Me</span></h2>
-        <div class="about-content">
-          <h3>Backend Engineer!</h3>
-          <p>
-            Hi! it's Sami, I am a Computer Science undergraduate pursuing my Bsc
-            from Bangladesh University of Professionals and
-            <em> Aspiring Backend Engineer </em> with a strong foundation in
-            problem-solving and competitive programming. As the
-            <strong>Co-Founder</strong> of BUP Computer Programming Club, I’ve
-            mentored aspiring coders and led teams in programming competitions.
-            Passionate about building efficient backend systems and tackling
-            complex challenges, I thrive on innovation and collaboration to
-            create impactful solutions.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- education section design -->
-    <section class="education" id="education">
-      <div class="education-row">
-        <div class="education-column left">
-          <h3 class="title">Education</h3>
-          <div class="education-box">
-            <div class="education-content">
-              <div class="content">
-                <div class="year">
-                  <i class="bx bxs-calendar"></i>2022 - 2025
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    placeholder="Full Name"
+                    required
+                  />
                 </div>
-                <h3>B.Sc CSE - Bangladesh University of Professionals</h3>
-                <p>CGPA - 3.70</p>
-              </div>
-            </div>
-
-            <div class="education-content">
-              <div class="content">
-                <div class="year">
-                  <i class="bx bxs-calendar"></i>2019 - 2021
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    placeholder="Email Address"
+                    required
+                  />
                 </div>
-                <h3>Higher Secondary - Dhaka College</h3>
-                <p>GPA 5.00</p>
               </div>
-            </div>
-
-            <div class="education-content">
-              <div class="content">
-                <div class="year">
-                  <i class="bx bxs-calendar"></i>2018 - 2019
-                </div>
-                <h3>Secondary - Monipur High School & College</h3>
-                <p>GPA 5.00</p>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="subject"
+                  placeholder="Subject"
+                  required
+                />
               </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="education-column right">
-          <h3 class="title">Experience</h3>
-          <div class="education-box">
-            <div class="education-content">
-              <div class="content">
-                <div class="year">
-                  <i class="bx bxs-calendar"></i>June, 2024 - Present
-                </div>
-                <h3>BUP Computer Programming Club</h3>
-                <p>Currently working as the competitive Programming Coach.</p>
+              <div class="mb-3">
+                <textarea
+                  class="form-control"
+                  name="message"
+                  rows="5"
+                  placeholder="Your Message"
+                  required
+                ></textarea>
               </div>
-            </div>
-
-            <div class="education-content">
-              <div class="content">
-                <div class="year">
-                  <i class="bx bxs-calendar"></i>May, 2023 - Dec-2024
-                </div>
-                <h3>Co-Founder</h3>
-                <p>I'm the Co-Founder of BUP Computer Programming Club.</p>
-              </div>
-            </div>
+              <button type="submit" class="btn btn-primary">
+                Send Message
+              </button>
+              <div id="formStatus" class="mt-3"></div>
+            </form>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="skills" id="skills">
-      <h2 class="heading top">My <span>Skills</span></h2>
-      <div class="skills-row">
-        <div class="skills-column left">
-          <h3 class="title">Technical Skills</h3>
-          <div class="skills-box">
-            <div class="skills-content">
-              <div class="progress">
-                <h3>MongoDB <span>95%</span></h3>
-                <div class="bar"><span></span></div>
-              </div>
-              <div class="progress">
-                <h3>Express <span>90%</span></h3>
-                <div class="bar"><span></span></div>
-              </div>
-              <div class="progress">
-                <h3>React <span>75%</span></h3>
-                <div class="bar"><span></span></div>
-              </div>
-              <div class="progress">
-                <h3>Node <span>85%</span></h3>
-                <div class="bar"><span></span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="skills-column right">
-          <h3 class="title">Programming Skills</h3>
-          <div class="skills-box">
-            <div class="skills-content">
-              <div class="progress">
-                <h3>C++ <span>85%</span></h3>
-                <div class="bar"><span></span></div>
-              </div>
-              <div class="progress">
-                <h3>JavaScript <span>80%</span></h3>
-                <div class="bar"><span></span></div>
-              </div>
-              <div class="progress">
-                <h3>C <span>75%</span></h3>
-                <div class="bar"><span></span></div>
-              </div>
-              <div class="progress">
-                <h3>Python <span>60%</span></h3>
-                <div class="bar"><span></span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="portfolio" id="portfolio">
-      <h2 class="heading top">My <span>Projects</span></h2>
-
-      <div class="portfolio-container bottom">
-        <div class="portfolio-box">
-          <img src="images/project.jpg" alt="" />
-          <div class="portfolio-layer">
-            <h4>Blood Bank Management System</h4>
-            <p>
-              This is a project that is about a virtual Blood Blank that can
-              help donor , hospitals & receivers connect.
-            </p>
-            <div class="project-links">
-              <a
-                href="https://github.com/Luimas007/Blood-Bank-Management-System"
-                target="_blank"
-                ><i class="bx bx-link-external"></i
-              ></a>
-              <a
-                href="https://github.com/Luimas007/Blood-Bank-Management-System"
-                target="_blank"
-                ><i class="bx bxl-github"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-box">
-          <img src="images/project 2.png" alt="" />
-          <div class="portfolio-layer">
-            <h4>Tic Tac Toe Game</h4>
-            <p>
-              Enjoy this Multiplayer Tic Tac Toe Game Built using JS, HTML, CSS
-            </p>
-            <div class="project-links">
-              <a href="https://luimas007.github.io/tic-tac-toe/" target="_blank"
-                ><i class="bx bx-link-external"></i
-              ></a>
-              <a href="https://luimas007.github.io/tic-tac-toe/" target="_blank"
-                ><i class="bx bxl-github"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-box">
-          <img src="images/project 3.jpeg" alt="" />
-          <div class="portfolio-layer">
-            <h4>Todo List</h4>
-            <p>
-              A JS based todo list application made for jotting down your daily
-              tasks with ease!
-            </p>
-            <div class="project-links">
-              <a href="https://luimas007.github.io/list-todo/" target="_blank"
-                ><i class="bx bx-link-external"></i
-              ></a>
-              <a href="https://luimas007.github.io/list-todo/" target="_blank"
-                ><i class="bx bxl-github"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-box">
-          <img src="images/will.webp" alt="" />
-          <div class="portfolio-layer">
-            <h4>Project-4</h4>
-            <p>Will Be Uploaded Soon...</p>
-            <div class="project-links">
-              <a href="#" target="_blank"
-                ><i class="bx bx-link-external"></i
-              ></a>
-              <a href="#" target="_blank"><i class="bx bxl-github"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-box">
-          <img src="images/will.webp" alt="" />
-          <div class="portfolio-layer">
-            <h4>Sudoko Solver</h4>
-            <p>Everyone's favorite game is now here! Play it right now!</p>
-            <div class="project-links">
-              <a href="#" target="_blank"
-                ><i class="bx bx-link-external"></i
-              ></a>
-              <a href="#" target="_blank"><i class="bx bxl-github"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-box">
-          <img src="images/will.webp" alt="" />
-          <div class="portfolio-layer">
-            <h4>project-6</h4>
-            <p>Will Be Uploaded Soon...</p>
-            <div class="project-links">
-              <a href="#" target="_blank"
-                ><i class="bx bx-link-external"></i
-              ></a>
-              <a href="#" target="_blank"><i class="bx bxl-github"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- contact section design -->
-    <section class="contact bottom" id="contact">
-      <h2 class="heading">Contact <span>Me!</span></h2>
-
-      <form action="#">
-        <div class="input-box">
-          <div class="input-field">
-            <input type="text" placeholder="Full Name" required />
-            <span class="focus"></span>
-          </div>
-          <div class="input-field">
-            <input type="text" placeholder="Email" required />
-            <span class="focus"></span>
-          </div>
-        </div>
-
-        <div class="input-box">
-          <div class="input-field">
-            <input type="number" placeholder="Phone No" required />
-            <span class="focus"></span>
-          </div>
-          <div class="input-field">
-            <input type="text" placeholder="Email Subject" required />
-            <span class="focus"></span>
-          </div>
-        </div>
-
-        <div class="textarea-field">
-          <span class="focus"></span>
-          <textarea
-            name=""
-            id=""
-            cols="30"
-            rows="10"
-            placeholder="Your Message"
-            required
-          ></textarea>
-        </div>
-
-        <div class="btn-box btns">
-          <button type="submit" class="btn">Submit</button>
-        </div>
-      </form>
-    </section>
-
-    <!-- footer design -->
-    <footer class="footer">
-      <div class="footer-text">
-        <p>Copyright &copy; 2025 by Samiul Haque | All Rights Reserved.</p>
-      </div>
-      <div class="footer-iconTop">
-        <a href="#"><i class="bx bx-up-arrow-alt"></i></a>
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-center">
+      <div class="container">
+        <p class="mb-0">
+          Copyright &copy; 2025 Samiul Haque Siddique. All Rights Reserved.
+        </p>
       </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+      <i class="bi bi-arrow-up"></i>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Typed.js -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize AOS
+        AOS.init({
+          duration: 800,
+          easing: "ease-in-out",
+          once: true,
+        });
+
+        // Initialize Typed.js
+        const typed = new Typed(".typed-text", {
+          strings: [
+            "Machine Learning Engineer",
+            "Backend Developer",
+            "Competitive Programmer",
+            "Problem Solver",
+          ],
+          typeSpeed: 50,
+          backSpeed: 30,
+          loop: true,
+        });
+
+        // Back to top button
+        const backToTopButton = document.querySelector(".back-to-top");
+        window.addEventListener("scroll", function () {
+          if (window.pageYOffset > 300) {
+            backToTopButton.classList.add("active");
+          } else {
+            backToTopButton.classList.remove("active");
+          }
+        });
+
+        backToTopButton.addEventListener("click", function (e) {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 70,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+
+        // Navbar background on scroll
+        const navbar = document.querySelector(".navbar");
+        window.addEventListener("scroll", function () {
+          if (window.pageYOffset > 50) {
+            navbar.classList.add("navbar-scrolled");
+          } else {
+            navbar.classList.remove("navbar-scrolled");
+          }
+        });
+
+        // Form submission handling
+        const form = document.getElementById("contactForm");
+        const formStatus = document.getElementById("formStatus");
+
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+              method: "POST",
+              body: formData,
+              headers: {
+                Accept: "application/json",
+              },
+            })
+              .then((response) => {
+                if (response.ok) {
+                  formStatus.innerHTML =
+                    '<div class="alert alert-success">Thanks for your message! I\'ll get back to you soon.</div>';
+                  form.reset();
+                } else {
+                  throw new Error("Network response was not ok");
+                }
+              })
+              .catch((error) => {
+                formStatus.innerHTML =
+                  '<div class="alert alert-danger">There was a problem sending your message. Please try again later.</div>';
+              });
+          });
+        }
+
+        // Animate skill bubbles on hover
+        const bubbles = document.querySelectorAll(".bubble");
+        bubbles.forEach((bubble) => {
+          bubble.addEventListener("mouseover", function () {
+            if (this.classList.contains("filled")) {
+              this.classList.add("highlight");
+            }
+          });
+
+          bubble.addEventListener("mouseout", function () {
+            this.classList.remove("highlight");
+          });
+        });
+      });
+    </script>
   </body>
 </html>
