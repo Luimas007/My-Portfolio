@@ -25,6 +25,12 @@
       rel="stylesheet"
     />
 
+    <!-- Devicon for tool logos -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/devicon@2.15.1/devicon.min.css"
+    />
+
     <!-- Typed.js -->
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
@@ -47,6 +53,7 @@
         background-color: var(--darkest);
         color: var(--light);
         overflow-x: hidden;
+        position: relative;
       }
 
       .code-font {
@@ -98,45 +105,90 @@
           var(--darkest) 0%,
           var(--darker) 100%
         );
-      }
-
-      .code-visual {
-        border: 5px solid var(--primary);
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
-        background-color: var(--dark);
-        width: 100%;
-        height: 400px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        position: relative;
         overflow: hidden;
       }
 
-      .code-snippet {
+      /* Particle Background */
+      .particle {
+        position: absolute;
+        background: rgba(13, 110, 253, 0.3);
+        border-radius: 50%;
+        animation: float 10s infinite linear;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) scale(0);
+        }
+        100% {
+          transform: translateY(-100vh) scale(1);
+          opacity: 0;
+        }
+      }
+
+      .terminal {
+        background-color: var(--dark);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
         font-family: "JetBrains Mono", monospace;
         color: var(--light);
-        text-align: left;
+        height: 400px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .terminal-header {
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+        background: var(--darker);
+        border-radius: 10px 10px 0 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .terminal-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #ff5f57;
+      }
+
+      .terminal-dot:nth-child(2) {
+        background: #ffbd2e;
+      }
+
+      .terminal-dot:nth-child(3) {
+        background: #28ca41;
+      }
+
+      .terminal-content {
         padding: 20px;
-        width: 100%;
+        margin-top: 40px;
         font-size: 0.9rem;
         line-height: 1.6;
       }
 
-      .code-keyword {
-        color: #569cd6;
+      .profile-card {
+        background-color: var(--dark);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
+        text-align: center;
+        height: 100%;
       }
 
-      .code-function {
-        color: #dcdcaa;
-      }
-
-      .code-string {
-        color: #ce9178;
-      }
-
-      .code-comment {
-        color: #6a9955;
+      .profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--primary);
+        margin-bottom: 20px;
       }
 
       .typed-text {
@@ -176,7 +228,6 @@
         transform: translateY(-3px);
       }
 
-      /* Creative Skill Visualization */
       .skill-visualization {
         margin-bottom: 30px;
       }
@@ -244,8 +295,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--secondary);
-        font-size: 1.2rem;
+        overflow: hidden;
+      }
+
+      .project-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       .contact-form {
@@ -348,6 +404,13 @@
         padding: 5px 15px;
         border-radius: 20px;
         font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .tech-item i {
+        font-size: 1.2rem;
       }
 
       .cp-badge {
@@ -440,20 +503,20 @@
                 <i class="bi bi-trophy-fill"></i> ICPC Regionalist (Rank 121)
               </span>
               <span class="cp-badge">
-                <i class="bi bi-check-circle-fill"></i> Codeforces Specialist
+                <i class="bi bi-check-circle-fill"></i> Codeforces Expert
               </span>
             </div>
 
             <p class="lead mb-4">
               Machine Learning Engineer with strong competitive programming
-              skills, backend development expertise, and passion for solving
-              complex problems.
+              skills, backend development expertise, and a passion for solving
+              complex problems. Solved 1000+ DSA problems across platforms.
             </p>
 
             <div class="d-flex flex-wrap gap-3 mb-4">
               <a href="#contact" class="btn btn-primary btn-lg px-4">Hire Me</a>
               <a
-                href="https://drive.google.com/file/d/1NVyMKI4p0C5ooZE0v_JX18kRhxbZp6Oh/view?usp=sharing"
+                href="https://drive.google.com/file/d/1sZZBGNA1y7O_Hu1ntzAxfxkGN9s-UvdF/view?usp=sharing"
                 target="_blank"
                 class="btn btn-outline-primary btn-lg px-4"
                 >View CV</a
@@ -493,36 +556,76 @@
             </div>
           </div>
           <div class="col-lg-6" data-aos="fade-left">
-            <div class="code-visual">
-              <div class="code-snippet">
-                <span class="code-keyword">class</span>
-                <span class="code-function">MachineLearningEngineer</span>
-                {<br />
-                &nbsp;&nbsp;<span class="code-keyword">constructor</span>() {<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">this</span
-                >.name = <span class="code-string">"Samiul Haque"</span>;<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">this</span
-                >.skills = [<span class="code-string">"Python"</span>,
-                <span class="code-string">"ML"</span>,
-                <span class="code-string">"C++"</span>];<br />
-                &nbsp;&nbsp;}<br /><br />
-                &nbsp;&nbsp;<span class="code-function">solveProblem</span
-                >(problem) {<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span>
-                <span class="code-string">"Optimal Solution"</span>;<br />
-                &nbsp;&nbsp;}<br />
-                }<br /><br />
-                <span class="code-comment"
-                  >// Competitive Programmer & ML Engineer</span
-                ><br />
-                <span class="code-keyword">const</span> me =
-                <span class="code-keyword">new</span>
-                <span class="code-function">MachineLearningEngineer</span>();
+            <div class="terminal">
+              <div class="terminal-header">
+                <div class="terminal-dot"></div>
+                <div class="terminal-dot"></div>
+                <div class="terminal-dot"></div>
+              </div>
+              <div class="terminal-content">
+                <span class="code-keyword">$ whoami</span><br />
+                Samiul Haque Siddique<br />
+                Machine Learning Engineer & Competitive Programmer<br /><br />
+                <span class="code-keyword">$ skills</span><br />
+                - Python, C++, JavaScript<br />
+                - TensorFlow, Django, FastAPI, Express.js<br />
+                - MongoDB, MySQL, Docker<br /><br />
+                <span class="code-keyword">$ achievements</span><br />
+                - Codeforces Expert<br />
+                - ICPC Regionalist (Rank 121)<br />
+                - Solved 1000+ DSA problems<br /><br />
+                <span class="code-keyword">$ status</span><br />
+                Ready to build intelligent systems and solve complex challenges!
               </div>
             </div>
           </div>
         </div>
       </div>
+      <!-- Particle Background -->
+      <div
+        class="particle"
+        style="width: 20px; height: 20px; left: 10%; top: 0"
+      ></div>
+      <div
+        class="particle"
+        style="
+          width: 15px;
+          height: 15px;
+          left: 30%;
+          top: 20%;
+          animation-delay: 2s;
+        "
+      ></div>
+      <div
+        class="particle"
+        style="
+          width: 25px;
+          height: 25px;
+          left: 50%;
+          top: 40%;
+          animation-delay: 4s;
+        "
+      ></div>
+      <div
+        class="particle"
+        style="
+          width: 18px;
+          height: 18px;
+          left: 70%;
+          top: 60%;
+          animation-delay: 6s;
+        "
+      ></div>
+      <div
+        class="particle"
+        style="
+          width: 22px;
+          height: 22px;
+          left: 90%;
+          top: 80%;
+          animation-delay: 8s;
+        "
+      ></div>
     </section>
 
     <!-- About Section -->
@@ -531,39 +634,23 @@
         <h2 class="section-title">About <span>Me</span></h2>
         <div class="row align-items-center">
           <div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right">
-            <div class="code-visual" style="height: 100%">
-              <div class="code-snippet">
-                <span class="code-comment"># Professional Overview</span><br />
-                <span class="code-keyword">def</span>
-                <span class="code-function">about_me</span>():<br />
-                &nbsp;&nbsp;<span class="code-keyword">return</span> {<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"role"</span>:
-                <span class="code-string">"Machine Learning Engineer"</span
-                >,<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"skills"</span
-                >: [<span class="code-string">"Python"</span>,
-                <span class="code-string">"C++"</span>,
-                <span class="code-string">"ML"</span>],<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string"
-                  >"education"</span
-                >: <span class="code-string">"B.Sc CSE @ BUP"</span>,<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string"
-                  >"achievements"</span
-                >: [<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string"
-                  >"ICPC Regionalist (Rank 121)"</span
-                >,<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string"
-                  >"Codeforces Specialist"</span
-                >,<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string"
-                  >"UIU CSE Fest (51st)"</span
-                ><br />
-                &nbsp;&nbsp;&nbsp;&nbsp;]<br />
-                &nbsp;&nbsp;}<br /><br />
-                <span class="code-comment"
-                  ># Passionate about AI and competitive programming</span
-                >
+            <div class="profile-card">
+              <img
+                src="https://via.placeholder.com/150"
+                alt="Samiul Haque"
+                class="profile-img"
+              />
+              <h4>Samiul Haque Siddique</h4>
+              <p class="text-muted">
+                Machine Learning Engineer & Codeforces Expert
+              </p>
+              <div class="d-flex justify-content-center gap-3">
+                <span class="cp-badge">
+                  <i class="bi bi-trophy-fill"></i> ICPC Regionalist
+                </span>
+                <span class="cp-badge">
+                  <i class="bi bi-check-circle-fill"></i> 1000+ DSA Problems
+                </span>
               </div>
             </div>
           </div>
@@ -586,10 +673,12 @@
               <span class="text-primary"
                 >121st in ICPC Dhaka Regional 2023</span
               >
-              among 400+ teams, and earning the
-              <span class="text-primary">Codeforces Specialist</span> title. I'm
-              passionate about building intelligent systems and solving complex
-              algorithmic challenges.
+              among 400+ teams, earning the
+              <span class="text-primary">Codeforces Expert</span> title, and
+              solving
+              <span class="text-primary">1000+ DSA problems</span> across
+              various platforms. I'm passionate about building intelligent
+              systems and tackling complex algorithmic challenges.
             </p>
 
             <div class="row">
@@ -607,7 +696,7 @@
                   <i class="bi bi-code-square text-primary me-2"></i>
                   <div>
                     <h6 class="mb-0">CP Rating</h6>
-                    <p class="mb-0">Codeforces Specialist</p>
+                    <p class="mb-0">Codeforces Expert</p>
                   </div>
                 </div>
               </div>
@@ -634,16 +723,36 @@
             <div class="mt-4">
               <h5 class="mb-3">Technology Stack</h5>
               <div class="tech-stack">
-                <span class="tech-item">Python</span>
-                <span class="tech-item">C++</span>
-                <span class="tech-item">TensorFlow</span>
-                <span class="tech-item">Node.js</span>
-                <span class="tech-item">Express</span>
-                <span class="tech-item">MongoDB</span>
-                <span class="tech-item">Django</span>
-                <span class="tech-item">FastAPI</span>
-                <span class="tech-item">JavaScript</span>
-                <span class="tech-item">Docker</span>
+                <span class="tech-item"
+                  ><i class="devicon-python-plain"></i> Python</span
+                >
+                <span class="tech-item"
+                  ><i class="devicon-cplusplus-plain"></i> C++</span
+                >
+                <span class="tech-item"
+                  ><i class="devicon-tensorflow-original"></i> TensorFlow</span
+                >
+                <span class="tech-item"
+                  ><i class="devicon-nodejs-plain"></i> Node.js</span
+                >
+                <span class="tech-item"
+                  ><i class="devicon-express-original"></i> Express</span
+                >
+                <span class="tech-item"
+                  ><i class="devicon-mongodb-plain"></i> MongoDB</span
+                >
+                <span class="tech-item"
+                  ><i class="devicon-django-plain"></i> Django</span
+                >
+                <span class="tech-item"
+                  ><i class="devicon-fastapi-plain"></i> FastAPI</span
+                >
+                <span class="tech-item"
+                  ><i class="devicon-javascript-plain"></i> JavaScript</span
+                >
+                <span class="tech-item"
+                  ><i class="devicon-docker-plain"></i> Docker</span
+                >
               </div>
             </div>
           </div>
@@ -874,12 +983,24 @@
               <i class="bi bi-tools text-primary me-2"></i> Developer Tools
             </h3>
             <div class="tech-stack">
-              <span class="tech-item">Git</span>
-              <span class="tech-item">Docker</span>
-              <span class="tech-item">VS Code</span>
-              <span class="tech-item">Jupyter</span>
-              <span class="tech-item">Postman</span>
-              <span class="tech-item">Kaggle</span>
+              <span class="tech-item"
+                ><i class="devicon-git-plain"></i> Git</span
+              >
+              <span class="tech-item"
+                ><i class="devicon-docker-plain"></i> Docker</span
+              >
+              <span class="tech-item"
+                ><i class="devicon-vscode-plain"></i> VS Code</span
+              >
+              <span class="tech-item"
+                ><i class="devicon-jupyter-plain"></i> Jupyter</span
+              >
+              <span class="tech-item"
+                ><i class="devicon-postman-plain"></i> Postman</span
+              >
+              <span class="tech-item"
+                ><i class="devicon-kaggle-plain"></i> Kaggle</span
+              >
             </div>
           </div>
         </div>
@@ -893,7 +1014,9 @@
         <div class="row">
           <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up">
             <div class="card project-card h-100">
-              <div class="project-img">Graph Visualizer</div>
+              <div class="project-img">
+                <img src="graph.png" alt="Graph Visualizer" />
+              </div>
               <div class="card-body">
                 <h5 class="card-title">Graph Visualizer (DSA Tool)</h5>
                 <p class="card-text">
@@ -901,9 +1024,15 @@
                   real-time updates using Vis.js.
                 </p>
                 <div class="tech-stack mb-3">
-                  <span class="tech-item">JavaScript</span>
-                  <span class="tech-item">HTML5</span>
-                  <span class="tech-item">CSS3</span>
+                  <span class="tech-item"
+                    ><i class="devicon-javascript-plain"></i> JavaScript</span
+                  >
+                  <span class="tech-item"
+                    ><i class="devicon-html5-plain"></i> HTML5</span
+                  >
+                  <span class="tech-item"
+                    ><i class="devicon-css3-plain"></i> CSS3</span
+                  >
                   <span class="tech-item">Vis.js</span>
                 </div>
                 <a
@@ -930,7 +1059,9 @@
             data-aos-delay="100"
           >
             <div class="card project-card h-100">
-              <div class="project-img">Weather App</div>
+              <div class="project-img">
+                <img src="weather.png" alt="Predictive Weather App" />
+              </div>
               <div class="card-body">
                 <h5 class="card-title">Predictive Weather App</h5>
                 <p class="card-text">
@@ -938,9 +1069,15 @@
                   next day's forecast.
                 </p>
                 <div class="tech-stack mb-3">
-                  <span class="tech-item">FastAPI</span>
-                  <span class="tech-item">Python</span>
-                  <span class="tech-item">JavaScript</span>
+                  <span class="tech-item"
+                    ><i class="devicon-fastapi-plain"></i> FastAPI</span
+                  >
+                  <span class="tech-item"
+                    ><i class="devicon-python-plain"></i> Python</span
+                  >
+                  <span class="tech-item"
+                    ><i class="devicon-javascript-plain"></i> JavaScript</span
+                  >
                 </div>
                 <a
                   href="https://github.com/Luimas007/front-weather"
@@ -966,7 +1103,9 @@
             data-aos-delay="200"
           >
             <div class="card project-card h-100">
-              <div class="project-img">To-Do List</div>
+              <div class="project-img">
+                <img src="todo.png" alt="To-Do List App" />
+              </div>
               <div class="card-body">
                 <h5 class="card-title">To-Do List App</h5>
                 <p class="card-text">
@@ -974,9 +1113,15 @@
                   local storage.
                 </p>
                 <div class="tech-stack mb-3">
-                  <span class="tech-item">JavaScript</span>
-                  <span class="tech-item">HTML5</span>
-                  <span class="tech-item">CSS3</span>
+                  <span class="tech-item"
+                    ><i class="devicon-javascript-plain"></i> JavaScript</span
+                  >
+                  <span class="tech-item"
+                    ><i class="devicon-html5-plain"></i> HTML5</span
+                  >
+                  <span class="tech-item"
+                    ><i class="devicon-css3-plain"></i> CSS3</span
+                  >
                 </div>
                 <a
                   href="https://github.com/Luimas007/list-todo"
@@ -998,7 +1143,9 @@
 
           <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up">
             <div class="card project-card h-100">
-              <div class="project-img">Tic Tac Toe</div>
+              <div class="project-img">
+                <img src="tic.png" alt="Tic Tac Toe Game" />
+              </div>
               <div class="card-body">
                 <h5 class="card-title">Tic Tac Toe Game</h5>
                 <p class="card-text">
@@ -1006,9 +1153,15 @@
                   responsive design.
                 </p>
                 <div class="tech-stack mb-3">
-                  <span class="tech-item">JavaScript</span>
-                  <span class="tech-item">HTML5</span>
-                  <span class="tech-item">CSS3</span>
+                  <span class="tech-item"
+                    ><i class="devicon-javascript-plain"></i> JavaScript</span
+                  >
+                  <span class="tech-item"
+                    ><i class="devicon-html5-plain"></i> HTML5</span
+                  >
+                  <span class="tech-item"
+                    ><i class="devicon-css3-plain"></i> CSS3</span
+                  >
                 </div>
                 <a
                   href="https://github.com/Luimas007/tic-tac-toe"
@@ -1034,7 +1187,12 @@
             data-aos-delay="100"
           >
             <div class="card project-card h-100">
-              <div class="project-img">ML Project</div>
+              <div class="project-img">
+                <img
+                  src="https://via.placeholder.com/300x200?text=ML+Project"
+                  alt="Machine Learning Project"
+                />
+              </div>
               <div class="card-body">
                 <h5 class="card-title">Machine Learning Project</h5>
                 <p class="card-text">
@@ -1042,8 +1200,13 @@
                   (details coming soon).
                 </p>
                 <div class="tech-stack mb-3">
-                  <span class="tech-item">Python</span>
-                  <span class="tech-item">TensorFlow</span>
+                  <span class="tech-item"
+                    ><i class="devicon-python-plain"></i> Python</span
+                  >
+                  <span class="tech-item"
+                    ><i class="devicon-tensorflow-original"></i>
+                    TensorFlow</span
+                  >
                   <span class="tech-item">Scikit-learn</span>
                 </div>
                 <button class="btn btn-secondary btn-sm" disabled>
@@ -1059,7 +1222,12 @@
             data-aos-delay="200"
           >
             <div class="card project-card h-100">
-              <div class="project-img">API Service</div>
+              <div class="project-img">
+                <img
+                  src="https://via.placeholder.com/300x200?text=API+Service"
+                  alt="RESTful API Service"
+                />
+              </div>
               <div class="card-body">
                 <h5 class="card-title">RESTful API Service</h5>
                 <p class="card-text">
@@ -1067,9 +1235,15 @@
                   integration.
                 </p>
                 <div class="tech-stack mb-3">
-                  <span class="tech-item">Node.js</span>
-                  <span class="tech-item">Express</span>
-                  <span class="tech-item">MongoDB</span>
+                  <span class="tech-item"
+                    ><i class="devicon-nodejs-plain"></i> Node.js</span
+                  >
+                  <span class="tech-item"
+                    ><i class="devicon-express-original"></i> Express</span
+                  >
+                  <span class="tech-item"
+                    ><i class="devicon-mongodb-plain"></i> MongoDB</span
+                  >
                 </div>
                 <button class="btn btn-secondary btn-sm" disabled>
                   Coming Soon
@@ -1205,7 +1379,7 @@
     <footer class="py-4 bg-dark text-center">
       <div class="container">
         <p class="mb-0">
-          Copyright &copy; 2025 Samiul Haque Siddique. All Rights Reserved.
+          Copyright © 2025 Samiul Haque Siddique. All Rights Reserved.
         </p>
       </div>
     </footer>
